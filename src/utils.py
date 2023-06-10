@@ -35,4 +35,4 @@ def get_type(title):
 
 def upload_results(results: [VacancyModel]):
     for result in results:
-        requests.post(f"{API_URL}/vacancies", json=result.dict())
+        requests.post(f"{API_URL}/vacancies", json=result.json())
