@@ -1,4 +1,4 @@
-from src.parsers.dou_rss_parser import DouRssParser
+from src.parsers.dou.dou_rss_parser import DouRssParser
 from src.utils import upload_results
 
 
