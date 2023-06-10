@@ -1,0 +1,4 @@
+feedparser==6.0.10
+pydantic==1.10.9
+pytest==7.3.1
+requests==2.31.0
