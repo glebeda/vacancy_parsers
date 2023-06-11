@@ -8,7 +8,7 @@ from src.model import VacancyModel
 
 def get_clean_summary(html):
     text = strip_tags(html)
-    return text
+    return text.strip()
 
 
 def strip_tags(string):

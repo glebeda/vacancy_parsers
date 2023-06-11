@@ -26,14 +26,16 @@ class DjinniParser(AbstractParser):
             response = requests.get(vacancy_link)
             vacancy = BeautifulSoup(response.text, "html.parser")
             title = vacancy.select_one('div.detail--title-wrapper h1').getText().strip()
-            summary = vacancy.select_one('div.row-mobile-order-2')
+            html_summary = vacancy.select_one('div.row-mobile-order-2')
+
+            summary = str(html_summary).replace("</br>", " ")
 
             print()
             data = {
                 "title": title,
                 "link": vacancy_link,
-                "raw_text": str(summary),
-                "clean_text": summary.get_text(),
+                "raw_text": summary,
+                "clean_text": get_clean_summary(summary),
                 "level": get_level(title),
                 "type": get_type(title),
                 "published": datetime.datetime.now().isoformat(),
