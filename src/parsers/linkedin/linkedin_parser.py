@@ -40,5 +40,5 @@ class LinkedinParser(AbstractParser):
                 "published": datetime.now().isoformat(),
             }
 
-            results.append(data)
+            results.append(VacancyModel(**data))
         return results
