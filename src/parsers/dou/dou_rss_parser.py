@@ -17,7 +17,7 @@ class DouRssParser(AbstractParser):
             title = entry['title']
             summary = entry['summary']
             published = entry['published']
-            published_date = datetime.strptime(published, '%a, %d %b %Y %H:%M:%S %z')
+            published_date = datetime.strptime(published, '%a, %d %b %Y %H:%M:%S %z').replace(tzinfo=None).isoformat()
 
             data = {
                 "title": title,
@@ -26,7 +26,7 @@ class DouRssParser(AbstractParser):
                 "clean_text": get_clean_summary(summary),
                 "level": get_level(title),
                 "type": get_type(title),
-                "published": published_date.replace(tzinfo=None),
+                "published": published_date,
             }
 
             results.append(VacancyModel(**data))

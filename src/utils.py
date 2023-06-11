@@ -36,6 +36,6 @@ def get_type(title):
 def upload_results(results: [VacancyModel]):
     print(f"About to upload {len(results)} vacancies")
     for result in results:
-        response = requests.post(f"{API_URL}/vacancies", json=result.json())
+        response = requests.post(f"{API_URL}/vacancies", json=result.dict())
         print(response.status_code)
         print(response.json())

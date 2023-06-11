@@ -10,4 +10,4 @@ class VacancyModel(BaseModel):
     type: str
     clean_text: str
     raw_text: str
-    published: datetime
+    published: str
