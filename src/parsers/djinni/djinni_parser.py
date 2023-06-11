@@ -15,11 +15,8 @@ class DjinniParser(AbstractParser):
         url = f"{self.BASE_URL}/jobs/?all-keywords=&any-of-keywords=&exclude-keywords=" \
               "&primary_keyword=QA&primary_keyword=QA+Automation"
         response = requests.get(url)
-        print()
         page = BeautifulSoup(response.text, "html.parser")
-
         all_links = page.find_all('a', class_='profile', href=True)
-
         results = []
         for link in all_links:
             vacancy_link = f"{self.BASE_URL}{link['href']}"
@@ -27,10 +24,7 @@ class DjinniParser(AbstractParser):
             vacancy = BeautifulSoup(response.text, "html.parser")
             title = vacancy.select_one('div.detail--title-wrapper h1').getText().strip()
             html_summary = vacancy.select_one('div.row-mobile-order-2')
-
             summary = str(html_summary).replace("</br>", " ")
-
-            print()
             data = {
                 "title": title,
                 "link": vacancy_link,
